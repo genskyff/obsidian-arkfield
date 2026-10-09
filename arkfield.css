@@ -754,7 +754,9 @@ a.tag,
   font-weight: 700;
 }
 
-input[type="checkbox"]:checked {
+/* Obsidian repaints the border of a hovered checked box with its fill; keep the ink frame. */
+input[type="checkbox"]:checked,
+input[type="checkbox"]:checked:hover {
   border-color: var(--checkbox-border-color);
 }
 
