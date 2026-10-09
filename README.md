@@ -15,8 +15,6 @@ GitHub 风格的五种提示（NOTE、TIP、IMPORTANT、WARNING、CAUTION）沿�
 
 完整格式与中日英混排效果见 [主题展示文档](assets/coverage.md)——把它和 `assets/coverage-figure.svg` 复制到库中打开即可检查。
 
-主题内嵌三份可变字体：正文与界面拉丁用 Inter，标题与技术标签用 Space Grotesk，代码用 Fira Code，CJK 统一走系统字体栈。在“设置 → 外观 → 字体”中指定的字体优先于主题字体。正文字号为设置值的 1.0625 倍（默认 16px 显示为 17px）。
-
 <details>
 <summary><strong>预览</strong></summary>
 
