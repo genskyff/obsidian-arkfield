@@ -3,7 +3,7 @@ node = "lts"
 oxfmt = "latest"
 
 [tasks.build]
-run = "mise x -- node scripts/build.mjs"
+run = ["mise x -- node scripts/build.mjs", "mise run fmt"]
 
 [tasks.check]
 run = "mise x -- oxfmt --check"
