@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "v*"
+      - "[0-9]+.[0-9]+.[0-9]+"
 
 permissions:
   contents: read
@@ -27,22 +27,24 @@ jobs:
       - name: Verify tag matches manifest version
         env:
           TAG: ${{ github.ref_name }}
-        run: test "v$(jq -r .version theme/manifest.json)" = "$TAG"
+        run: test "$(jq -r .version manifest.json)" = "$TAG"
 
       - name: Verify generated theme
         run: |
           mise run build
-          git diff --exit-code -- theme
+          git diff --exit-code -- theme.css
 
       - name: Package theme
-        working-directory: theme
         env:
           TAG: ${{ github.ref_name }}
-        run: zip -r "../arkfield-$TAG.zip" .
+        run: zip "arkfield-$TAG.zip" manifest.json theme.css
 
       - name: Publish release
         uses: softprops/action-gh-release@v3
         with:
-          files: arkfield-*.zip
+          files: |
+            arkfield-*.zip
+            manifest.json
+            theme.css
           generate_release_notes: true
           fail_on_unmatched_files: true

@@ -34,10 +34,10 @@ const banner =
 const source = read("arkfield.css").toString("utf8");
 const css = `${banner}${source}\n/* Embedded fonts (SIL Open Font License 1.1, see fonts/) */\n\n${faces.join("\n")}`;
 
-const formatted = execSync("oxfmt --stdin-filepath=theme/theme.css", {
+const formatted = execSync("oxfmt --stdin-filepath=theme.css", {
   cwd: fileURLToPath(root),
   input: css,
   maxBuffer: 16 * 1024 * 1024,
 });
-writeFileSync(new URL("theme/theme.css", root), formatted);
+writeFileSync(new URL("theme.css", root), formatted);
 console.log(`theme.css built (${fonts.length} fonts embedded)`);

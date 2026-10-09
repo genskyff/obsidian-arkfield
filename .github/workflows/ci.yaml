@@ -26,4 +26,4 @@ jobs:
       - name: Verify generated theme
         run: |
           mise run build
-          git diff --exit-code -- theme
+          git diff --exit-code -- theme.css
