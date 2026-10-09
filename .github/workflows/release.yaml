@@ -34,11 +34,15 @@ jobs:
           mise run build
           git diff --exit-code -- theme
 
+      - name: Package theme
+        working-directory: theme
+        env:
+          TAG: ${{ github.ref_name }}
+        run: zip -r "../arkfield-$TAG.zip" .
+
       - name: Publish release
         uses: softprops/action-gh-release@v3
         with:
-          files: |
-            theme/manifest.json
-            theme/theme.css
+          files: arkfield-*.zip
           generate_release_notes: true
           fail_on_unmatched_files: true
