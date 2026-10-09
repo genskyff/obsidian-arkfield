@@ -1,48 +1,48 @@
 # Arkfield
 
-Arkfield 是一个以《明日方舟：终末地》视觉语言为参考的 Obsidian 浅色主题，由 [Typora 版 Arkfield](https://github.com/genskyff/typora-arkfield) 移植而来：纸白、炭黑与信号黄，方角、细规则线，以及笔记纸张两侧克制的工程网格。
+Arkfield is a light Obsidian theme inspired by the visual language of _Arknights: Endfield_, ported from [Arkfield for Typora](https://github.com/genskyff/typora-arkfield): paper white, charcoal ink and signal yellow, square corners, fine rules, and a restrained engineering grid on both sides of the note sheet.
 
-## 覆盖范围
+## Coverage
 
-- 文档：内联标题、1~6 级标题、正文、链接与双链、标签、列表/任务列表、引用、标注（Callout）、表格、代码、数学公式、Mermaid、笔记属性、脚注、嵌入、HTML 折叠块/定义列表/注音。
-- 编辑：实时预览与源码模式，标题、列表符号、代码块与水平线在两种视图中保持一致。
-- 应用外壳：标签页、侧栏与文件列表、大纲、命令面板、菜单、设置、提示框、通知与状态栏。
-- 导出：PDF 导出单独处理分页、长表格、代码换行和背景色还原；`<div style="page-break-after: always;"></div>` 在阅读视图中显示为分页标记。
+- Documents: inline title, headings 1–6, body text, links and wikilinks, tags, lists and task lists, blockquotes, callouts, tables, code, math, Mermaid, properties, footnotes, embeds, and HTML details, definition lists and ruby.
+- Editing: Live Preview and Source mode, with headings, list markers, code blocks and horizontal rules consistent across both.
+- App shell: tabs, sidebars and the file explorer, outline, command palette, menus, settings, modals, notices and the status bar.
+- Export: PDF export handles page breaks, long tables, code wrapping and background colors; `<div style="page-break-after: always;"></div>` shows as a page-break marker in Reading view.
 
-GitHub 风格的五种提示（NOTE、TIP、IMPORTANT、WARNING、CAUTION）沿用 GitHub 的图标与配色，其中 CAUTION 与 WARNING 分开着色。
+The five GitHub-style alerts (NOTE, TIP, IMPORTANT, WARNING, CAUTION) keep GitHub's icons and colors, with CAUTION colored separately from WARNING.
 
-深色模式没有单独设计：切换到深色时，Arkfield 的结构线与信号黄会叠加在 Obsidian 默认深色配色上。
+Dark mode has no dedicated design: when you switch to dark, Arkfield's rules and signal yellow sit on top of Obsidian's default dark palette.
 
-完整格式与中日英混排效果见 [主题展示文档](assets/coverage.md)——把它和 `assets/coverage-figure.svg` 复制到库中打开即可检查。
+For the full range of formatting and mixed Chinese, Japanese and English text, see the [showcase note](assets/coverage.md): copy it together with `assets/coverage-figure.svg` into a vault and open it.
 
 <details>
-<summary><strong>预览</strong></summary>
+<summary><strong>Preview</strong></summary>
 
-<img src="assets/screenshots/01-reading-view.png" alt="阅读视图" />
+<img src="assets/screenshots/01-reading-view.png" alt="Reading view" />
 
-<img src="assets/screenshots/02-callouts.png" alt="标注" />
+<img src="assets/screenshots/02-callouts.png" alt="Callouts" />
 
-<img src="assets/screenshots/03-code-and-data.png" alt="代码与数据" />
+<img src="assets/screenshots/03-code-and-data.png" alt="Code and data" />
 
-<img src="assets/screenshots/04-live-preview.png" alt="实时预览" />
+<img src="assets/screenshots/04-live-preview.png" alt="Live Preview" />
 
-<img src="assets/screenshots/05-dark-mode.png" alt="深色模式" />
+<img src="assets/screenshots/05-dark-mode.png" alt="Dark mode" />
 
 </details>
 
-## 安装
+## Installation
 
-在 Obsidian 中打开“设置 → 外观 → 主题 → 管理”，搜索 `Arkfield` 后安装并启用。
+In Obsidian, open Settings → Appearance → Themes → Manage, search for `Arkfield`, then install and use it.
 
-也可以手动安装。Obsidian 只在文件夹名与 `manifest.json` 中的 `name` 完全一致（区分大小写）时才会列出主题，因此文件夹必须命名为 `Arkfield`。
+To install manually: Obsidian lists a theme only when its folder name matches `name` in `manifest.json` exactly (case-sensitive), so the folder must be named `Arkfield`.
 
-1. 从 [Releases](../../releases) 下载 zip 并解压
-2. 把解压出的 `manifest.json` 与 `theme.css` 放入 `<库>/.obsidian/themes/Arkfield/`
-3. 在“设置 → 外观 → 主题”中选择 `Arkfield`
+1. Download the zip from [Releases](../../releases) and extract it
+2. Put the extracted `manifest.json` and `theme.css` in `<vault>/.obsidian/themes/Arkfield/`
+3. Select `Arkfield` in Settings → Appearance → Themes
 
-## 开发
+## Development
 
-通过 [mise](https://mise.jdx.dev/getting-started.html) 管理：
+Tooling is managed with [mise](https://mise.jdx.dev/getting-started.html):
 
 ```shell
 mise install
@@ -51,13 +51,13 @@ mise run check
 mise run fmt
 ```
 
-`arkfield.css` 是唯一需要维护的主题样式源码；`theme.css` 由 `mise run build` 把源码与 `fonts/` 中的字体（以 base64 内嵌）拼接生成，不需要手动编辑。
+`arkfield.css` is the only stylesheet to maintain; `mise run build` generates `theme.css` from it and the fonts in `fonts/` (embedded as base64), so there is no need to edit `theme.css` by hand.
 
-构建后把 `manifest.json` 与 `theme.css` 复制到库的 `.obsidian/themes/Arkfield/`。Obsidian 检测到库中当前主题的 `theme.css` 变化后会自动重新加载，无需重启；修改 `manifest.json` 后需要重启 Obsidian。通过 `Ctrl+Shift+I` 打开开发者工具检查编辑区和应用界面。
+After building, copy `manifest.json` and `theme.css` into `.obsidian/themes/Arkfield/` in your vault. Obsidian reloads the active theme as soon as its `theme.css` changes, without a restart; changes to `manifest.json` need a restart. Press `Ctrl+Shift+I` to open the developer tools and inspect the editor and the app.
 
-发布时先更新 `manifest.json` 中的版本号，再推送同名标签（如 `1.0.0`，不带 `v` 前缀，Obsidian 按版本号查找 Release）；工作流会校验生成物，并把 `manifest.json`、`theme.css` 和打包好的 `arkfield-<版本>.zip` 附加到 Release。
+To release, bump the version in `manifest.json`, then push a tag with the same name (for example `1.0.0`, without a `v` prefix, because Obsidian looks up the release by version). The workflow verifies the generated file and attaches `manifest.json`, `theme.css` and a packaged `arkfield-<version>.zip` to the release.
 
-## 参考
+## References
 
 - [Ark UI Skill](https://github.com/Brandon030722/ark-ui-skill)
 - [Build a theme](https://docs.obsidian.md/Themes/App+themes/Build+a+theme)
