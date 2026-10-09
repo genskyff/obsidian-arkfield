@@ -1095,13 +1095,14 @@ body.is-phone {
     --ark-strong-mark: color-mix(in srgb, var(--ark-signal) 55%, var(--ark-paper));
   }
 
+  /* page-break-* rather than break-*: caniuse, and so the directory's lint, rates break-* partial. */
   .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
-    break-after: avoid-page;
-    break-inside: avoid-page;
+    page-break-after: avoid;
+    page-break-inside: avoid;
   }
 
   .markdown-rendered :is(pre, blockquote, img, svg, .callout, .math-block, .mermaid) {
-    break-inside: avoid-page;
+    page-break-inside: avoid;
   }
 
   .markdown-rendered :is(p, li) {
@@ -1130,7 +1131,7 @@ body.is-phone {
   }
 
   .markdown-rendered table {
-    break-inside: auto;
+    page-break-inside: auto;
   }
 
   .markdown-rendered thead {
@@ -1138,7 +1139,7 @@ body.is-phone {
   }
 
   .markdown-rendered tr {
-    break-inside: avoid-page;
+    page-break-inside: avoid;
   }
 }
 
