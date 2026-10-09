@@ -1002,8 +1002,9 @@ input[type="checkbox"]:checked:hover {
   --nav-item-weight-active: var(--font-bold);
 }
 
+/* Obsidian shades the active settings tab with the hover tint; match the other active items. */
 body:not(.is-phone) .vertical-tab-nav-item.is-active {
-  background-color: var(--ark-paper);
+  background-color: var(--nav-item-background-active);
 }
 
 .suggestion-item.is-selected {
