@@ -522,9 +522,14 @@ body {
 /* Inline semantics                                                           */
 /* -------------------------------------------------------------------------- */
 
+/*
+ * A one-color band sized to the lower 38% rather than a transparent-to-mark
+ * gradient: PDF readers disagree on gradients whose stops differ in alpha.
+ */
 .markdown-rendered strong,
 .markdown-source-view.mod-cm6 .cm-strong {
-  background: linear-gradient(transparent 62%, var(--ark-strong-mark) 62%);
+  background: linear-gradient(var(--ark-strong-mark), var(--ark-strong-mark)) 0 100% / 100% 38%
+    no-repeat;
 }
 
 .markdown-rendered del,
@@ -1088,6 +1093,8 @@ body.is-phone {
 
 @media print {
   .markdown-rendered {
+    /* Opaque in print: some PDF readers drop translucent fills inside gradients. */
+    --ark-strong-mark: color-mix(in srgb, var(--ark-signal) 55%, var(--ark-paper));
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
@@ -1108,6 +1115,21 @@ body.is-phone {
   .markdown-rendered :is(p, li) {
     orphans: 3;
     widows: 3;
+  }
+
+  /* Exported lists use native markers instead of .list-bullet; follow the same cycle. */
+  .markdown-rendered :is(ul, ol) ul,
+  .markdown-rendered :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ul {
+    list-style-type: circle;
+  }
+
+  .markdown-rendered :is(ul, ol) :is(ul, ol) ul,
+  .markdown-rendered :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ul {
+    list-style-type: square;
+  }
+
+  .markdown-rendered :is(ul, ol) :is(ul, ol) :is(ul, ol) ul {
+    list-style-type: disc;
   }
 
   .markdown-rendered pre {
