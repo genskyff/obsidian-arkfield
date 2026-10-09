@@ -744,6 +744,12 @@ a.tag,
   --ark-bullet-fill: transparent;
 }
 
+.markdown-rendered :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ul {
+  --list-bullet-radius: 0;
+  --list-bullet-border: none;
+  --ark-bullet-fill: var(--list-marker-color);
+}
+
 .list-bullet::after {
   box-sizing: border-box;
   background-color: var(--ark-bullet-fill, var(--list-marker-color));
