@@ -1,0 +1,8 @@
+[tools]
+oxfmt = "latest"
+
+[tasks.check]
+run = "mise x -- oxfmt --check"
+
+[tasks.fmt]
+run = "mise x -- oxfmt"
