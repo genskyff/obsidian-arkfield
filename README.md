@@ -34,8 +34,8 @@ GitHub 风格的五种提示（NOTE、TIP、IMPORTANT、WARNING、CAUTION）沿�
 
 Obsidian 只在文件夹名与 `manifest.json` 中的 `name` 完全一致（区分大小写）时才会列出主题，因此文件夹必须命名为 `Arkfield`。
 
-1. 从 [Releases](../../releases) 下载 `manifest.json` 与 `theme.css`
-2. 放入 `<库>/.obsidian/themes/Arkfield/`
+1. 从 [Releases](../../releases) 下载 zip 并解压
+2. 把解压出的 `manifest.json` 与 `theme.css` 放入 `<库>/.obsidian/themes/Arkfield/`
 3. 在“设置 → 外观 → 主题”中选择 `Arkfield`
 
 ## 开发
@@ -53,7 +53,7 @@ mise run fmt
 
 构建后把 `theme/` 下的 `manifest.json` 与 `theme.css` 复制到库的 `.obsidian/themes/Arkfield/`。Obsidian 检测到库中当前主题的 `theme.css` 变化后会自动重新加载，无需重启；修改 `manifest.json` 后需要重启 Obsidian。通过 `Ctrl+Shift+I` 打开开发者工具检查编辑区和应用界面。
 
-发布时先更新 `theme/manifest.json` 中的版本号，再推送带 `v` 前缀的对应标签（如 `v1.0.0`）；工作流会校验生成物并把 `manifest.json` 与 `theme.css` 附加到 Release。
+发布时先更新 `theme/manifest.json` 中的版本号，再推送带 `v` 前缀的对应标签（如 `v1.0.0`）；工作流会校验生成物，并把 `theme/` 打包成 `arkfield-<标签>.zip` 附加到 Release。
 
 ## 参考
 
