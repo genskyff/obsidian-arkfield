@@ -340,7 +340,6 @@ body {
   --embed-border-start: 2px solid var(--ark-ink);
 
   --metadata-background: var(--ark-paper);
-  --metadata-label-text-color-hover: var(--ark-ink);
   --metadata-property-box-shadow-hover: 0 0 0 1px var(--ark-rule);
   --pill-border-color-hover: var(--ark-ink);
   --pill-color: var(--ark-ink);
@@ -368,7 +367,6 @@ body {
   --menu-border-color: var(--ark-ink);
   --menu-shadow: var(--ark-hard-shadow);
   --modal-border-color: var(--ark-ink);
-  --modal-shadow: var(--ark-hard-shadow-l);
   --prompt-border-color: var(--ark-ink);
   --tooltip-background: var(--ark-ink);
   --tooltip-color: var(--ark-paper);
@@ -1095,12 +1093,6 @@ body.is-phone {
   .markdown-rendered {
     /* Opaque in print: some PDF readers drop translucent fills inside gradients. */
     --ark-strong-mark: color-mix(in srgb, var(--ark-signal) 55%, var(--ark-paper));
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .markdown-preview-view {
-    background: none;
   }
 
   .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
@@ -1147,12 +1139,6 @@ body.is-phone {
 
   .markdown-rendered tr {
     break-inside: avoid-page;
-  }
-
-  .markdown-rendered [style*="page-break-after"] {
-    height: 0;
-    margin: 0;
-    background: none;
   }
 }
 
