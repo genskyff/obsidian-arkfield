@@ -1,0 +1,1125 @@
+/* -------------------------------------------------------------------------- */
+/* Arkfield for Obsidian                                                      */
+/* -------------------------------------------------------------------------- */
+
+body {
+  --font-preferred-size: calc(var(--font-text-size) * 1.0625);
+  --font-ui-smaller: 13px;
+  --font-ui-small: 14px;
+  --font-ui-medium: 16px;
+  --font-ui-large: 21px;
+
+  --ark-unit: var(--font-preferred-size);
+  --ark-radius: 2px;
+  --ark-signal-span: calc(var(--ark-unit) * 4);
+  --ark-sheet-padding: calc(var(--ark-unit) * 4);
+  --ark-grid-size: calc(var(--ark-unit) * 5.5);
+
+  --ark-font-cjk: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei";
+  --ark-font-cjk-ja: "Noto Sans JP", "Source Han Sans JP", "Hiragino Sans", "Yu Gothic UI", Meiryo;
+  --ark-font-tech: "Space Grotesk", var(--ark-font-cjk), sans-serif;
+  --ark-font-ja: "Inter", var(--ark-font-cjk-ja), var(--ark-font-cjk), sans-serif;
+
+  --font-text-theme: "Inter", var(--ark-font-cjk), sans-serif;
+  --font-interface-theme: var(--font-text-theme);
+  --font-monospace-theme:
+    "Fira Code", "Sarasa Mono SC", "SFMono-Regular", Consolas, "Liberation Mono",
+    var(--ark-font-cjk), monospace;
+
+  --ark-signal-rule: linear-gradient(
+    90deg,
+    var(--ark-signal) 0 var(--ark-signal-span),
+    var(--ark-ink) var(--ark-signal-span)
+  );
+  --ark-hover: color-mix(in srgb, var(--ark-ink) 8%, transparent);
+  --ark-on: color-mix(in srgb, var(--ark-ink) 14%, transparent);
+  --ark-link-line: color-mix(in srgb, var(--ark-ink) 42%, transparent);
+  --ark-grid-line: color-mix(in srgb, var(--ark-ink) 5%, transparent);
+  --ark-sheet-shadow: color-mix(in srgb, var(--ark-ink) 7%, transparent);
+  --ark-hard-shadow: 4px 4px 0 color-mix(in srgb, var(--ark-ink) 12%, transparent);
+  --ark-hard-shadow-l: 6px 6px 0 color-mix(in srgb, var(--ark-ink) 12%, transparent);
+
+  /* Typography */
+  --bold-modifier: 300;
+  --p-spacing: calc(var(--ark-unit) * 0.8);
+  --file-line-width: calc(var(--ark-unit) * 48);
+
+  --h1-size: 2.15em;
+  --h2-size: 1.55em;
+  --h3-size: 1.25em;
+  --h4-size: 1.08em;
+  --h5-size: 1.08em;
+  --h6-size: 1.08em;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 700;
+  --h4-weight: 700;
+  --h5-weight: 700;
+  --h6-weight: 700;
+  --h1-line-height: 1.25;
+  --h2-line-height: 1.25;
+  --h3-line-height: 1.25;
+  --h4-line-height: 1.25;
+  --h5-line-height: 1.25;
+  --h6-line-height: 1.25;
+  --h1-letter-spacing: -0.025em;
+  --h2-letter-spacing: -0.015em;
+  --h3-letter-spacing: 0;
+  --h4-letter-spacing: 0;
+  --h5-letter-spacing: 0.01em;
+  --h6-letter-spacing: 0.02em;
+  --h1-font: var(--ark-font-tech);
+  --h2-font: var(--ark-font-tech);
+  --h3-font: var(--ark-font-tech);
+  --h4-font: var(--ark-font-tech);
+  --h5-font: var(--ark-font-tech);
+  --h6-font: var(--ark-font-tech);
+
+  /* Geometry */
+  --radius-s: var(--ark-radius);
+  --radius-m: var(--ark-radius);
+  --radius-l: var(--ark-radius);
+  --radius-xl: var(--ark-radius);
+  --input-radius: var(--ark-radius);
+  --checkbox-radius: 0;
+  --toggle-radius: 0;
+  --toggle-thumb-radius: 0;
+  --slider-thumb-radius: 0;
+  --tab-radius: 0;
+  --tab-radius-active: 0;
+  --tab-curve: 0px;
+  --tag-radius: 0;
+  --pill-radius: var(--ark-radius);
+  --hotkey-radius: var(--ark-radius);
+  --swatch-radius: 0;
+  --callout-radius: 0;
+  --image-radius: 0;
+  --scrollbar-radius: 0;
+  --nav-item-radius: 0;
+  --footnote-radius: 0;
+  --metadata-property-radius: var(--ark-radius);
+  --metadata-property-radius-hover: var(--ark-radius);
+  --metadata-property-radius-focus: var(--ark-radius);
+  --table-selection-border-radius: 0;
+  --status-bar-radius: 0;
+
+  /* Blocks */
+  --blockquote-border-thickness: 3px;
+  --callout-border-width: 0 0 0 3px;
+  --callout-border-opacity: 1;
+  --callout-padding: calc(var(--ark-unit) * 0.8) var(--ark-unit);
+  --callout-title-size: 0.875em;
+  --callout-blend-mode: normal;
+  --code-border-width: 1px;
+  --list-spacing: calc(var(--ark-unit) * 0.28);
+  --list-bullet-size: 0.32em;
+  --checklist-done-decoration: none;
+  --checklist-done-color: var(--text-normal);
+  --embed-padding: 0 0 0 var(--ark-unit);
+  --hr-thickness: 1px;
+  --table-line-height: 1.55;
+  --table-text-size: 0.875em;
+  --table-header-font: var(--ark-font-tech);
+  --tag-border-width: 1px;
+  --tag-padding-x: 0.45em;
+  --tag-padding-y: 0.2em;
+  --tag-weight: 500;
+  --link-decoration-thickness: 1px;
+  --link-unresolved-opacity: 1;
+  --link-unresolved-decoration-style: dashed;
+  --metadata-padding: calc(var(--ark-unit) * 0.6) var(--ark-unit);
+  --metadata-border-width: 1px;
+  --metadata-label-font: var(--font-monospace);
+  --metadata-input-font: var(--font-monospace);
+  --metadata-gap: 2px;
+
+  /* Shell */
+  --divider-width-hover: 2px;
+  --setting-items-border-width: 1px;
+}
+
+.theme-light {
+  --ark-ink: #191919;
+  --ark-soft: #33332e;
+  --ark-muted: #55554e;
+  --ark-char: #8a8a82;
+  --ark-comment: #5f5f58;
+  --ark-blur: #9c9c95;
+  --ark-scrollbar: #8b8b84;
+  --ark-rule: #d7d7d1;
+  --ark-seam: var(--ark-ink);
+  --ark-canvas: #f2f2f0;
+  --ark-paper: #fafaf8;
+  --ark-signal: #fffa00;
+  --ark-on-signal: #191919;
+  --ark-verified: #00754a;
+  --ark-info: #315b76;
+  --ark-important: #6843a5;
+  --ark-warning: #8a4b00;
+  --ark-error: #d92e16;
+
+  --ark-info-surface: #edf4f8;
+  --ark-important-surface: #f4f0fa;
+  --ark-warning-surface: #fff5e6;
+  --ark-verified-surface: #eaf5ef;
+  --ark-error-surface: #fff0ed;
+  --ark-quote-surface: color-mix(in srgb, var(--ark-ink) 4%, var(--ark-paper));
+  --ark-signal-wash: color-mix(in srgb, var(--ark-signal) 5%, transparent);
+  --ark-strong-mark: color-mix(in srgb, var(--ark-signal) 55%, transparent);
+}
+
+/*
+ * Dark mode has no bespoke palette. Arkfield's structure keeps working on top
+ * of Obsidian's own dark colors, with signal yellow as the only fixed accent.
+ */
+.theme-dark {
+  --ark-ink: var(--text-normal);
+  --ark-soft: var(--text-normal);
+  --ark-muted: var(--text-muted);
+  --ark-char: var(--text-faint);
+  --ark-comment: var(--text-muted);
+  --ark-blur: var(--text-faint);
+  --ark-scrollbar: var(--text-faint);
+  --ark-rule: var(--background-modifier-border);
+  --ark-seam: var(--background-modifier-border-hover);
+  --ark-canvas: var(--background-secondary);
+  --ark-paper: var(--background-primary);
+  --ark-signal: #fffa00;
+  --ark-on-signal: #191919;
+  --ark-verified: var(--color-green);
+  --ark-info: var(--color-blue);
+  --ark-important: var(--color-purple);
+  --ark-warning: var(--color-orange);
+  --ark-error: var(--color-red);
+
+  --ark-info-surface: color-mix(in srgb, var(--ark-info) 14%, var(--ark-paper));
+  --ark-important-surface: color-mix(in srgb, var(--ark-important) 14%, var(--ark-paper));
+  --ark-warning-surface: color-mix(in srgb, var(--ark-warning) 14%, var(--ark-paper));
+  --ark-verified-surface: color-mix(in srgb, var(--ark-verified) 14%, var(--ark-paper));
+  --ark-error-surface: color-mix(in srgb, var(--ark-error) 14%, var(--ark-paper));
+  --ark-quote-surface: color-mix(in srgb, var(--ark-ink) 6%, var(--ark-paper));
+  --ark-signal-wash: color-mix(in srgb, var(--ark-signal) 6%, transparent);
+  --ark-strong-mark: color-mix(in srgb, var(--ark-signal) 28%, transparent);
+}
+
+/*
+ * Obsidian's base and named colors, rebuilt from the Arkfield palette. Most
+ * semantic colors (backgrounds, text, borders, states) derive from these, so
+ * only the ones that differ from Obsidian's derivation are set below.
+ */
+.theme-light {
+  --color-base-00: var(--ark-paper);
+  --color-base-05: #f6f6f4;
+  --color-base-10: var(--ark-canvas);
+  --color-base-20: #ebebe8;
+  --color-base-25: #e2e2de;
+  --color-base-30: var(--ark-rule);
+  --color-base-35: #c9c9c2;
+  --color-base-40: var(--ark-blur);
+  --color-base-50: var(--ark-char);
+  --color-base-60: #6f6f68;
+  --color-base-70: var(--ark-muted);
+  --color-base-100: var(--ark-ink);
+
+  --color-red: var(--ark-error);
+  --color-red-rgb: 217, 46, 22;
+  --color-orange: var(--ark-warning);
+  --color-orange-rgb: 138, 75, 0;
+  --color-yellow: var(--ark-signal);
+  --color-yellow-rgb: 255, 250, 0;
+  --color-green: var(--ark-verified);
+  --color-green-rgb: 0, 117, 74;
+  --color-cyan: var(--ark-info);
+  --color-cyan-rgb: 49, 91, 118;
+  --color-blue: var(--ark-info);
+  --color-blue-rgb: 49, 91, 118;
+  --color-purple: var(--ark-important);
+  --color-purple-rgb: 104, 67, 165;
+  --color-pink: var(--ark-important);
+  --color-pink-rgb: 104, 67, 165;
+
+  /* Ink is the interactive accent; signal yellow marks entry and selection. */
+  --accent-h: 0;
+  --accent-s: 0%;
+  --accent-l: 10%;
+  --color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 6%));
+  --color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 14%));
+
+  --background-secondary: var(--ark-canvas);
+  --background-secondary-alt: var(--ark-canvas);
+  --background-modifier-hover: var(--ark-hover);
+  --background-modifier-active-hover: var(--ark-on);
+  --background-modifier-border-hover: var(--ark-blur);
+  --background-modifier-border-focus: var(--ark-ink);
+  --background-modifier-cover: color-mix(in srgb, var(--ark-canvas) 82%, transparent);
+  --background-modifier-box-shadow: color-mix(in srgb, var(--ark-ink) 12%, transparent);
+
+  --text-on-accent: var(--ark-paper);
+  --text-on-accent-inverted: var(--ark-ink);
+  --text-selection: var(--ark-signal);
+  --text-highlight-bg: var(--ark-signal);
+
+  --interactive-hover: color-mix(in srgb, var(--ark-ink) 8%, var(--ark-paper));
+
+  --input-shadow: inset 0 0 0 1px var(--ark-rule);
+  --input-shadow-hover: inset 0 0 0 1px var(--ark-ink);
+  --shadow-xs: 2px 2px 0 color-mix(in srgb, var(--ark-ink) 10%, transparent);
+  --shadow-s: var(--ark-hard-shadow);
+  --shadow-l: var(--ark-hard-shadow-l);
+}
+
+/* Variables that only reference Arkfield tokens are safe in both modes. */
+.theme-light,
+.theme-dark {
+  --link-color: var(--ark-ink);
+  --link-color-hover: var(--ark-ink);
+  --link-external-color: var(--ark-ink);
+  --link-external-color-hover: var(--ark-ink);
+  --link-unresolved-color: var(--ark-muted);
+  --link-unresolved-decoration-color: var(--ark-char);
+  --italic-color: var(--ark-soft);
+
+  --list-marker-color: var(--ark-ink);
+  --list-marker-color-hover: var(--ark-muted);
+  --list-marker-color-collapsed: var(--ark-ink);
+  --collapse-icon-color-collapsed: var(--ark-ink);
+  --checkbox-color: var(--ark-signal);
+  --checkbox-color-hover: var(--ark-signal);
+  --checkbox-marker-color: var(--ark-on-signal);
+  --checkbox-border-color: var(--ark-ink);
+  --checkbox-border-color-hover: var(--ark-ink);
+
+  --blockquote-border-color: var(--ark-signal);
+  --blockquote-background-color: var(--ark-signal-wash);
+
+  --callout-default: var(--ark-info);
+  --callout-info: var(--ark-info);
+  --callout-todo: var(--ark-info);
+  --callout-summary: var(--ark-info);
+  --callout-tip: var(--ark-verified);
+  --callout-success: var(--ark-verified);
+  --callout-important: var(--ark-important);
+  --callout-question: var(--ark-important);
+  --callout-example: var(--ark-important);
+  --callout-warning: var(--ark-warning);
+  --callout-fail: var(--ark-error);
+  --callout-error: var(--ark-error);
+  --callout-bug: var(--ark-error);
+  --callout-quote: var(--ark-muted);
+
+  --code-background: var(--ark-paper);
+  --code-border-color: var(--ark-rule);
+  --code-comment: var(--ark-comment);
+  --code-function: var(--ark-info);
+  --code-important: var(--ark-error);
+  --code-keyword: var(--ark-ink);
+  --code-operator: var(--ark-ink);
+  --code-property: var(--ark-info);
+  --code-punctuation: var(--ark-muted);
+  --code-string: var(--ark-verified);
+  --code-tag: var(--ark-ink);
+  --code-value: var(--ark-warning);
+
+  --table-header-background: color-mix(in srgb, var(--ark-ink) 5%, transparent);
+  --table-header-background-hover: color-mix(in srgb, var(--ark-ink) 5%, transparent);
+  --table-row-alt-background: color-mix(in srgb, var(--ark-ink) 3%, transparent);
+  --table-row-background-hover: color-mix(in srgb, var(--ark-signal) 16%, transparent);
+  --table-row-alt-background-hover: color-mix(in srgb, var(--ark-signal) 16%, transparent);
+  --table-selection: color-mix(in srgb, var(--ark-signal) 30%, transparent);
+  --table-selection-border-color: var(--ark-ink);
+
+  --tag-color: var(--ark-ink);
+  --tag-color-hover: var(--ark-on-signal);
+  --tag-background: transparent;
+  --tag-background-hover: var(--ark-signal);
+  --tag-border-color: var(--ark-rule);
+  --tag-border-color-hover: var(--ark-ink);
+
+  --embed-border-start: 2px solid var(--ark-ink);
+
+  --metadata-background: var(--ark-paper);
+  --metadata-label-text-color-hover: var(--ark-ink);
+  --metadata-property-box-shadow-hover: 0 0 0 1px var(--ark-rule);
+  --pill-border-color-hover: var(--ark-ink);
+  --pill-color: var(--ark-ink);
+
+  /*
+   * Ribbon, tab bar and status bar follow --background-secondary (canvas); the
+   * active tab and the view header follow --background-primary (paper).
+   */
+  --ribbon-background-collapsed: var(--ark-canvas);
+  --tab-divider-color: var(--ark-rule);
+  --tab-text-color: var(--ark-muted);
+  --tab-text-color-active: var(--ark-ink);
+  --tab-text-color-focused-active: var(--ark-ink);
+  --divider-color: var(--ark-seam);
+  --divider-color-hover: var(--ark-ink);
+  --file-header-border: 1px solid var(--ark-seam);
+
+  --nav-item-color: var(--ark-soft);
+  --nav-item-background-active: var(--ark-on);
+  --nav-item-background-selected: var(--ark-on);
+  --indentation-guide-color: var(--ark-rule);
+  --indentation-guide-color-active: var(--ark-char);
+
+  --menu-background: var(--ark-paper);
+  --menu-border-color: var(--ark-ink);
+  --menu-shadow: var(--ark-hard-shadow);
+  --modal-border-color: var(--ark-ink);
+  --modal-shadow: var(--ark-hard-shadow-l);
+  --prompt-border-color: var(--ark-ink);
+  --tooltip-background: var(--ark-ink);
+  --tooltip-color: var(--ark-paper);
+  --tooltip-shadow: none;
+  --notice-background: var(--ark-ink);
+  --notice-color: var(--ark-paper);
+  --notice-shadow: var(--ark-hard-shadow);
+
+  --scrollbar-thumb-bg: color-mix(in srgb, var(--ark-scrollbar) 55%, transparent);
+  --scrollbar-active-thumb-bg: var(--ark-scrollbar);
+
+  --graph-line: var(--ark-rule);
+  --graph-node-focused: var(--ark-ink);
+  --graph-node-attachment: var(--ark-warning);
+  --canvas-background: var(--ark-canvas);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Stage: engineering grid with the note sheet                                */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * The grid and the paper sheet are painted on the scroll container itself, so
+ * Obsidian's sizers keep their own layout. The sheet is the readable line
+ * width plus side padding and collapses to full width in narrow panes. A
+ * hard shadow offset to the right lifts the sheet off the stage.
+ */
+.view-content > .markdown-reading-view > .markdown-preview-view.is-readable-line-width,
+.view-content > .markdown-source-view.mod-cm6.is-readable-line-width > .cm-editor > .cm-scroller {
+  --ark-sheet: min(100%, calc(var(--file-line-width) + var(--ark-sheet-padding) * 2));
+  background:
+    linear-gradient(var(--ark-paper) 0 0) 50% 0 / var(--ark-sheet) 100% no-repeat,
+    linear-gradient(var(--ark-rule) 0 0) 50% 0 / calc(var(--ark-sheet) + 2px) 100% no-repeat,
+    linear-gradient(var(--ark-sheet-shadow) 0 0) calc(50% + 5px) 0 / calc(var(--ark-sheet) + 2px)
+      100% no-repeat,
+    linear-gradient(var(--ark-grid-line) 1px, transparent 1px) 0 0 / var(--ark-grid-size)
+      var(--ark-grid-size),
+    linear-gradient(90deg, var(--ark-grid-line) 1px, transparent 1px) 0 0 / var(--ark-grid-size)
+      var(--ark-grid-size),
+    var(--ark-canvas);
+}
+
+.markdown-rendered,
+.markdown-source-view.mod-cm6 {
+  --line-height-normal: 1.68;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Headings                                                                   */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Reading view renders h1-h6; Live Preview renders .cm-line.HyperMD-header-N
+ * with padding-top: var(--p-spacing). All structure lines are background
+ * layers so they work on both without positioned pseudo-elements.
+ */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+  --ark-heading-gap: 0px;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
+  --ark-heading-gap: var(--p-spacing);
+}
+
+.markdown-rendered h1,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1,
+.inline-title:not([data-level]) {
+  padding-bottom: calc(var(--ark-unit) * 0.65);
+  background: var(--ark-signal-rule) left bottom / 100% 4px no-repeat;
+}
+
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+  padding-bottom: calc(var(--ark-unit) * 0.45);
+  padding-left: var(--ark-unit);
+  background:
+    linear-gradient(var(--ark-ink) 0 0) left 0 top calc(var(--ark-heading-gap) + 0.4em) /
+      calc(var(--ark-unit) * 0.4) calc(var(--ark-unit) * 0.4) no-repeat,
+    linear-gradient(var(--ark-signal) 0 0) left calc(var(--ark-unit) * 0.2) top
+      calc(var(--ark-heading-gap) + 0.4em + var(--ark-unit) * 0.2) / calc(var(--ark-unit) * 0.4)
+      calc(var(--ark-unit) * 0.4) no-repeat,
+    var(--ark-signal-rule) left bottom / 100% 2px no-repeat;
+}
+
+.markdown-rendered :is(h3, h4, h5, h6),
+.markdown-source-view.mod-cm6
+  .cm-line:is(.HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
+  --ark-heading-bar: linear-gradient(var(--ark-heading-bar-color) 0 0) left bottom /
+    var(--ark-heading-bar-width) calc(100% - var(--ark-heading-gap)) no-repeat;
+  padding-left: var(--ark-unit);
+  background: var(--ark-heading-bar);
+}
+
+.markdown-rendered h3,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+  --ark-heading-bar-color: var(--ark-signal);
+  --ark-heading-bar-width: 3px;
+  padding-bottom: calc(var(--ark-unit) * 0.3 + 2px);
+  background:
+    var(--ark-heading-bar),
+    linear-gradient(var(--ark-ink) 0 0) left var(--ark-unit) bottom / calc(var(--ark-unit) * 2.5)
+      2px no-repeat;
+}
+
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
+  --ark-heading-bar-color: var(--ark-ink);
+  --ark-heading-bar-width: 3px;
+}
+
+.markdown-rendered h5,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5 {
+  --ark-heading-bar-color: var(--ark-signal);
+  --ark-heading-bar-width: 2px;
+}
+
+.markdown-rendered h6,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+  --ark-heading-bar-color: var(--ark-ink);
+  --ark-heading-bar-width: 2px;
+}
+
+.markdown-rendered h1 {
+  --heading-spacing: calc(var(--ark-unit) * 2.2);
+  margin-block: var(--heading-spacing) calc(var(--ark-unit) * 1.1);
+}
+
+.markdown-rendered h2 {
+  --heading-spacing: calc(var(--ark-unit) * 1.85);
+  margin-block: var(--heading-spacing) calc(var(--ark-unit) * 0.9);
+}
+
+.markdown-rendered h3 {
+  --heading-spacing: calc(var(--ark-unit) * 1.55);
+  margin-block: var(--heading-spacing) calc(var(--ark-unit) * 0.75);
+}
+
+.markdown-rendered :is(h4, h5, h6) {
+  --heading-spacing: calc(var(--ark-unit) * 1.25);
+  margin-block: var(--heading-spacing) calc(var(--ark-unit) * 0.6);
+}
+
+.markdown-rendered
+  div:is(.el-h1, .el-h2, .el-h3, .el-h4, .el-h5, .el-h6)
+  + div
+  > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: calc(var(--ark-unit) * 1.1);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Inline semantics                                                           */
+/* -------------------------------------------------------------------------- */
+
+.markdown-rendered strong,
+.markdown-source-view.mod-cm6 .cm-strong {
+  background: linear-gradient(transparent 62%, var(--ark-strong-mark) 62%);
+}
+
+.markdown-rendered del,
+.markdown-source-view.mod-cm6 .cm-strikethrough {
+  color: var(--ark-muted);
+  text-decoration-thickness: 1px;
+}
+
+:is(.markdown-rendered, .markdown-source-view) u {
+  text-decoration-color: color-mix(in srgb, var(--ark-ink) 50%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+:is(.markdown-rendered, .markdown-source-view) :is(sub, sup):not(.footnote-ref) {
+  font-size: 0.72em;
+  line-height: 0;
+}
+
+:is(.markdown-rendered, .markdown-source-view) rt {
+  color: var(--ark-muted);
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+}
+
+:is(.markdown-rendered, .markdown-source-view) abbr[title] {
+  text-decoration-color: var(--ark-muted);
+  text-underline-offset: 0.18em;
+}
+
+:is(.markdown-rendered, .markdown-source-view) :lang(ja) {
+  font-family: var(--ark-font-ja);
+}
+
+.markdown-rendered mark,
+.markdown-source-view.mod-cm6 .cm-highlight:not(.obsidian-search-match-highlight) {
+  padding-inline: 0.15em;
+}
+
+:is(.markdown-rendered, .markdown-source-view) kbd {
+  padding: 0.12em 0.45em;
+  border: 1px solid var(--ark-ink);
+  border-bottom-width: 2px;
+  border-radius: var(--ark-radius);
+  background: var(--ark-paper);
+  color: var(--ark-ink);
+  font-family: var(--font-monospace);
+  font-size: 0.78em;
+}
+
+/*
+ * Inline code keeps an ink frame; code blocks keep the neutral rule. Live
+ * Preview renders fences inside quotes as one inline-code span per line, so
+ * quoted spans keep the neutral rule too.
+ */
+.markdown-rendered :not(pre) > code,
+.markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-quote) {
+  border-color: var(--ark-ink);
+  border-bottom-width: 2px;
+}
+
+.markdown-rendered :not(pre) > code {
+  padding: 0.1em 0.35em;
+}
+
+.markdown-rendered a:not(.tag, .footnote-link),
+.markdown-source-view.mod-cm6 :is(.cm-underline, .cm-url) {
+  text-decoration-color: var(--ark-link-line);
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--anim-duration-fast) ease-out;
+}
+
+.markdown-rendered a:not(.tag, .footnote-link):hover,
+.markdown-source-view.mod-cm6 :is(.cm-underline, .cm-url):hover {
+  text-decoration-color: var(--ark-ink);
+  text-decoration-thickness: 2px;
+}
+
+a.tag,
+.markdown-source-view.mod-cm6 .cm-hashtag {
+  font-family: var(--ark-font-tech);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Structured blocks                                                          */
+/* -------------------------------------------------------------------------- */
+
+.markdown-rendered blockquote {
+  padding: calc(var(--ark-unit) * 0.8) var(--ark-unit);
+  border-block: 1px solid var(--ark-rule);
+}
+
+.callout {
+  --ark-callout-surface: color-mix(in srgb, var(--callout-color) 8%, var(--ark-paper));
+  background-color: var(--ark-callout-surface);
+  color: var(--ark-ink);
+}
+
+.callout:is(
+  [data-callout="note"],
+  [data-callout="info"],
+  [data-callout="todo"],
+  [data-callout="abstract"],
+  [data-callout="summary"],
+  [data-callout="tldr"]
+) {
+  --ark-callout-surface: var(--ark-info-surface);
+}
+
+.callout:is(
+  [data-callout="tip"],
+  [data-callout="hint"],
+  [data-callout="success"],
+  [data-callout="check"],
+  [data-callout="done"]
+) {
+  --ark-callout-surface: var(--ark-verified-surface);
+}
+
+.callout:is(
+  [data-callout="important"],
+  [data-callout="question"],
+  [data-callout="help"],
+  [data-callout="faq"],
+  [data-callout="example"]
+) {
+  --ark-callout-surface: var(--ark-important-surface);
+}
+
+.callout:is([data-callout="warning"], [data-callout="attention"]) {
+  --ark-callout-surface: var(--ark-warning-surface);
+}
+
+/* GitHub keeps CAUTION separate from WARNING; Obsidian aliases them. */
+.callout:is(
+  [data-callout="caution"],
+  [data-callout="failure"],
+  [data-callout="fail"],
+  [data-callout="missing"],
+  [data-callout="danger"],
+  [data-callout="error"],
+  [data-callout="bug"]
+) {
+  --callout-color: var(--callout-error);
+  --ark-callout-surface: var(--ark-error-surface);
+}
+
+.callout:is([data-callout="quote"], [data-callout="cite"]) {
+  --ark-callout-surface: var(--ark-quote-surface);
+}
+
+.callout[data-callout="note"] {
+  --callout-icon: lucide-info;
+}
+
+.callout[data-callout="tip"] {
+  --callout-icon: lucide-lightbulb;
+}
+
+.callout[data-callout="important"] {
+  --callout-icon: lucide-message-square-warning;
+}
+
+.callout[data-callout="caution"] {
+  --callout-icon: lucide-octagon-alert;
+}
+
+.callout-title {
+  align-items: center;
+  font-family: var(--ark-font-tech);
+  letter-spacing: 0.04em;
+}
+
+.callout-icon .svg-icon {
+  --icon-size: 1.1em;
+}
+
+.callout-content > :first-child {
+  margin-top: calc(var(--ark-unit) * 0.35);
+}
+
+.callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* Bullets cycle filled circle, open circle and square by nesting depth. */
+.markdown-rendered ul,
+.markdown-source-view.mod-cm6 .HyperMD-list-line:is(.HyperMD-list-line-1, .HyperMD-list-line-4) {
+  --list-bullet-radius: 50%;
+  --list-bullet-border: none;
+  --ark-bullet-fill: var(--list-marker-color);
+}
+
+.markdown-rendered :is(ul, ol) ul,
+.markdown-source-view.mod-cm6 .HyperMD-list-line:is(.HyperMD-list-line-2, .HyperMD-list-line-5) {
+  --list-bullet-radius: 50%;
+  --list-bullet-border: 1px solid var(--list-marker-color);
+  --ark-bullet-fill: transparent;
+}
+
+.markdown-rendered :is(ul, ol) :is(ul, ol) ul,
+.markdown-source-view.mod-cm6 .HyperMD-list-line:is(.HyperMD-list-line-3, .HyperMD-list-line-6) {
+  --list-bullet-radius: 0;
+  --list-bullet-border: none;
+  --ark-bullet-fill: var(--list-marker-color);
+}
+
+.markdown-rendered :is(ul, ol) :is(ul, ol) :is(ul, ol) ul {
+  --list-bullet-radius: 50%;
+  --list-bullet-border: none;
+  --ark-bullet-fill: var(--list-marker-color);
+}
+
+.markdown-rendered :is(ul, ol) :is(ul, ol) :is(ul, ol) :is(ul, ol) ul {
+  --list-bullet-radius: 50%;
+  --list-bullet-border: 1px solid var(--list-marker-color);
+  --ark-bullet-fill: transparent;
+}
+
+.list-bullet::after {
+  box-sizing: border-box;
+  background-color: var(--ark-bullet-fill, var(--list-marker-color));
+}
+
+.markdown-rendered ol > li::marker,
+.markdown-source-view.mod-cm6 .cm-formatting-list-ol {
+  color: var(--list-marker-color);
+  font-family: var(--ark-font-tech);
+  font-weight: 700;
+}
+
+input[type="checkbox"]:checked {
+  border-color: var(--checkbox-border-color);
+}
+
+.task-list-item-checkbox {
+  cursor: var(--cursor-link);
+}
+
+:is(.markdown-rendered, .markdown-source-view) dt {
+  font-family: var(--ark-font-tech);
+  font-weight: 700;
+}
+
+:is(.markdown-rendered, .markdown-source-view) dd {
+  margin: calc(var(--ark-unit) * 0.35) 0 calc(var(--ark-unit) * 0.8) calc(var(--ark-unit) * 1.5);
+}
+
+:is(.markdown-rendered, .markdown-source-view) details {
+  margin-block: var(--p-spacing);
+  padding: calc(var(--ark-unit) * 0.65) calc(var(--ark-unit) * 0.8);
+  border: 1px solid var(--ark-rule);
+  border-top: 0;
+  background:
+    var(--ark-signal-rule) left top / 100% 2px no-repeat,
+    var(--ark-paper);
+}
+
+:is(.markdown-rendered, .markdown-source-view) details > :last-child {
+  margin-bottom: 0;
+}
+
+:is(.markdown-rendered, .markdown-source-view) summary {
+  cursor: var(--cursor-link);
+  font-family: var(--ark-font-tech);
+  font-weight: 700;
+}
+
+:is(.markdown-rendered, .markdown-source-view) details[open] > summary {
+  margin-bottom: calc(var(--ark-unit) * 0.6);
+  padding-bottom: calc(var(--ark-unit) * 0.5);
+  border-bottom: 1px solid var(--ark-rule);
+}
+
+.markdown-rendered hr,
+.markdown-source-view.mod-cm6 .cm-line.hr hr {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    var(--ark-signal) 0 calc(var(--ark-unit) * 2),
+    var(--ark-ink) calc(var(--ark-unit) * 2)
+  );
+}
+
+.markdown-rendered hr {
+  margin-block: calc(var(--ark-unit) * 2.25);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Code, math and diagrams                                                    */
+/* -------------------------------------------------------------------------- */
+
+.markdown-rendered pre {
+  padding: calc(var(--ark-unit) * 0.8) var(--ark-unit);
+  border-top: 0;
+  background:
+    var(--ark-signal-rule) left top / 100% 2px no-repeat,
+    var(--code-background);
+  line-height: 1.65;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin-bg {
+  border-top-width: 0;
+  background-image: var(--ark-signal-rule);
+  background-position: left top;
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+}
+
+.markdown-source-view.mod-cm6 .code-block-flair,
+.markdown-rendered button.copy-code-button {
+  font-family: var(--ark-font-tech);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:is(.markdown-rendered, .markdown-source-view) :is(.token.keyword, .cm-keyword) {
+  font-weight: 700;
+}
+
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) .math-block {
+  padding-inline: var(--ark-unit);
+  border-bottom: 1px solid var(--ark-ink);
+  background:
+    var(--ark-signal-rule) left top / 100% 2px no-repeat,
+    var(--ark-paper);
+}
+
+/* Live Preview already pads the MathJax container; reading view does not. */
+.markdown-rendered .math-block {
+  padding-block: calc(var(--ark-unit) * 0.8);
+}
+
+.markdown-rendered .mermaid {
+  padding: calc(var(--ark-unit) * 0.85) var(--ark-unit) calc(var(--ark-unit) * 0.5);
+  border: 1px solid var(--ark-rule);
+  border-top: 0;
+  background:
+    var(--ark-signal-rule) left top / 100% 2px no-repeat,
+    var(--ark-paper);
+}
+
+.markdown-rendered .mermaid > svg {
+  display: block;
+  margin-inline: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tables, media and embeds                                                   */
+/* -------------------------------------------------------------------------- */
+
+.markdown-rendered :is(th, td) {
+  padding: 0.55em 0.75em;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper {
+  padding: 0.55em 0.75em;
+}
+
+.markdown-rendered th {
+  border-top: 2px solid var(--ark-ink);
+}
+
+.markdown-rendered img,
+.markdown-source-view .image-embed img {
+  border: 1px solid var(--ark-rule);
+}
+
+.markdown-rendered :is(video, iframe) {
+  border: 1px solid var(--ark-rule);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Properties, footnotes and page breaks                                      */
+/* -------------------------------------------------------------------------- */
+
+:is(.markdown-preview-view, .markdown-source-view) .metadata-container {
+  border-top: 0;
+  border-left: 2px solid var(--ark-ink);
+  background:
+    var(--ark-signal-rule) left top / 100% 3px no-repeat,
+    var(--metadata-background);
+}
+
+.metadata-properties-heading {
+  font-family: var(--ark-font-tech);
+  font-size: var(--font-ui-smaller);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.markdown-rendered .footnote-ref .footnote-link {
+  padding: 0.1em 0.4em;
+  background: var(--ark-strong-mark);
+  color: var(--ark-ink);
+  font-family: var(--ark-font-tech);
+  font-weight: 700;
+}
+
+.markdown-rendered section.footnotes {
+  margin-top: calc(var(--ark-unit) * 2.5);
+  color: var(--ark-muted);
+}
+
+.markdown-rendered section.footnotes > hr {
+  margin-block: 0 var(--ark-unit);
+  background: var(--ark-rule);
+}
+
+@media screen {
+  .markdown-rendered [style*="page-break-after"] {
+    position: relative;
+    height: 1px;
+    margin-block: calc(var(--ark-unit) * 2);
+    background: linear-gradient(
+      90deg,
+      var(--ark-signal) 0 calc(var(--ark-unit) * 2),
+      var(--ark-ink) calc(var(--ark-unit) * 2)
+    );
+  }
+
+  .markdown-rendered [style*="page-break-after"]::after {
+    content: "PAGE BREAK";
+    position: absolute;
+    inset: 50% 0 auto auto;
+    padding-left: 0.55em;
+    background: var(--ark-paper);
+    color: var(--ark-muted);
+    font-family: var(--ark-font-tech);
+    font-size: var(--font-ui-smaller);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transform: translateY(-50%);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Workspace shell                                                            */
+/* -------------------------------------------------------------------------- */
+
+/* The active note tab carries the signal rule; switching tabs wipes it in. */
+.workspace-split.mod-root .workspace-tab-header-container .workspace-tab-header.is-active {
+  background-image: var(--ark-signal-rule);
+  background-position: left top;
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  animation: ark-wipe var(--anim-duration-moderate) var(--anim-motion-swing);
+}
+
+@keyframes ark-wipe {
+  from {
+    background-size: 0 2px;
+  }
+}
+
+.tree-item-self.is-active,
+.vertical-tab-nav-item.is-active {
+  box-shadow: inset 3px 0 var(--ark-ink);
+}
+
+/* The outline also bolds the heading in view so the current section stands out. */
+.workspace-leaf-content[data-type="outline"] {
+  --nav-item-weight-active: var(--font-bold);
+}
+
+body:not(.is-phone) .vertical-tab-nav-item.is-active {
+  background-color: var(--ark-paper);
+}
+
+.suggestion-item.is-selected {
+  box-shadow: inset 3px 0 var(--ark-signal);
+}
+
+.status-bar {
+  font-family: var(--ark-font-tech);
+}
+
+button.mod-cta {
+  box-shadow: inset 3px 0 var(--ark-signal);
+}
+
+.notice {
+  box-shadow:
+    inset 3px 0 var(--ark-signal),
+    var(--notice-shadow);
+}
+
+.popover.hover-popover {
+  border-color: var(--ark-ink);
+  box-shadow: var(--ark-hard-shadow);
+}
+
+svg.svg-icon {
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+svg.svg-icon rect {
+  rx: 0;
+  ry: 0;
+}
+
+:where(
+  a,
+  button,
+  summary,
+  select,
+  [role="button"],
+  .clickable-icon,
+  .tree-item-self
+):focus-visible {
+  outline: 2px solid var(--ark-ink);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive and reduced motion                                              */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  body {
+    --h1-size: 1.85em;
+    --h2-size: 1.4em;
+    --h3-size: 1.2em;
+  }
+}
+
+body.is-phone {
+  --h1-size: 1.85em;
+  --h2-size: 1.4em;
+  --h3-size: 1.2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    --anim-duration-superfast: 0ms;
+    --anim-duration-fast: 0ms;
+    --anim-duration-moderate: 0ms;
+    --anim-duration-slow: 0ms;
+  }
+
+  .workspace-split.mod-root .workspace-tab-header-container .workspace-tab-header.is-active {
+    animation: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* PDF export                                                                 */
+/* -------------------------------------------------------------------------- */
+
+@media print {
+  .markdown-rendered {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .markdown-preview-view {
+    background: none;
+  }
+
+  .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+    break-after: avoid-page;
+    break-inside: avoid-page;
+  }
+
+  .markdown-rendered :is(pre, blockquote, img, svg, .callout, .math-block, .mermaid) {
+    break-inside: avoid-page;
+  }
+
+  .markdown-rendered :is(p, li) {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-rendered pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .markdown-rendered table {
+    break-inside: auto;
+  }
+
+  .markdown-rendered thead {
+    display: table-header-group;
+  }
+
+  .markdown-rendered tr {
+    break-inside: avoid-page;
+  }
+
+  .markdown-rendered [style*="page-break-after"] {
+    height: 0;
+    margin: 0;
+    background: none;
+  }
+}

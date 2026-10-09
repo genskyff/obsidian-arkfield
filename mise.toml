@@ -1,5 +1,9 @@
 [tools]
+node = "lts"
 oxfmt = "latest"
+
+[tasks.build]
+run = "mise x -- node scripts/build.mjs"
 
 [tasks.check]
 run = "mise x -- oxfmt --check"

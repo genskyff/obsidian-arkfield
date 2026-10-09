@@ -24,15 +24,21 @@ jobs:
       - name: Run check
         run: mise run check
 
-      - name: Package theme
-        working-directory: theme
+      - name: Verify tag matches manifest version
         env:
           TAG: ${{ github.ref_name }}
-        run: zip -r "../arkfield-$TAG.zip" .
+        run: test "v$(jq -r .version theme/manifest.json)" = "$TAG"
+
+      - name: Verify generated theme
+        run: |
+          mise run build
+          git diff --exit-code -- theme
 
       - name: Publish release
         uses: softprops/action-gh-release@v3
         with:
-          files: arkfield-*.zip
+          files: |
+            theme/manifest.json
+            theme/theme.css
           generate_release_notes: true
           fail_on_unmatched_files: true
